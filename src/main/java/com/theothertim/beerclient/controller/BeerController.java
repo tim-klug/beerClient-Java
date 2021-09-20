@@ -1,11 +1,15 @@
 package com.theothertim.beerclient.controller;
 
 import com.theothertim.beerclient.dto.Beer;
+import com.theothertim.beerclient.dto.BeerPagedList;
 import com.theothertim.beerclient.dto.BeerStyle;
 import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.reactive.function.client.ClientResponse;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Controller
@@ -14,11 +18,11 @@ public class BeerController {
 
   private final static String API_URL = "https://sfg-beer-works.github.io/brewery-api/";
 
-  public Mono<List<Beer>> listBeers(int pageNumber, int pageSize, String beerName, BeerStyle beerStyle, boolean showInventoryOnHand) {
-    return Mono.just(List.of());
+  public Mono<BeerPagedList> listBeers(int pageNumber, int pageSize, String beerName, BeerStyle beerStyle, boolean showInventoryOnHand) {
+    return Mono.just(null);
   }
 
-  public Mono<String> createNewBear(String beerName, BeerStyle beerStyle, String upc, String price) {
+  public Mono<String> createNewBear(Beer beer) {
     return Mono.just("");
   }
 
@@ -30,11 +34,11 @@ public class BeerController {
     return Mono.just(new Beer());
   }
 
-  public Mono<Void> updateBeerById(UUID id, String bearName, BeerStyle beerStyle, String upc, int quantityOnHand, String price) {
-    return Mono.empty();
+  public Mono<ResponseEntity> updateBeerById(Beer beer) {
+    return null;
   }
 
-  public Mono<Void> deleteBeerById(UUID id) {
-    return Mono.empty();
+  public Mono<ResponseEntity> deleteBeerById(UUID id) {
+    return null;
   }
 }
